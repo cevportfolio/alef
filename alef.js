@@ -19,6 +19,7 @@ for (const row of arr) {
             console.log(el);
         } else {            
             for (let i = 3; i <= Math.sqrt(el); i + 2){
+                console.log(i);
                 if (el%2==0){
                     console.log(el);
                     continue outer;
@@ -26,6 +27,7 @@ for (const row of arr) {
                     console.log(el + " " + i);
                     continue outer;
                 } 
+                console.log("2-й -- " + i);
                 // else {
                 //     console.log(el + " " + i + " -- ура!")
                 // }
