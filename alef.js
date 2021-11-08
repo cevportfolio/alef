@@ -25,9 +25,9 @@ for (const row of arr) {
                 } else if (el%i==0){                    
                     console.log(el + " " + i);
                     continue outer;
-                } else {
-                    console.log(el + " " + i + " -- ура!")
-                }
+                // } else {
+                //     console.log(el + " " + i + " -- ура!")
+                // }
             }
             // sum += el;
             console.log(1111);
