@@ -16,28 +16,30 @@ for (const row of arr) {
     outer: for (const el of row) {
         if (el == 2) {
             sum += el;
-            console.log(el);
-        } else {            
-            for (let i = 3; i <= Math.sqrt(el); i + 2){
-                console.log(i);
-                if (el%2==0){
-                    console.log(el);
-                    continue outer;
-                } else if (el%i==0){                    
-                    console.log(el + " " + i);
+            console.log("the one --> " + el);
+        } else if (el%2 > 0 && el > 1){            
+            for (let i = 3; i <= Math.sqrt(el); i += 2){
+                // console.log(i);
+                if (el%i==0){
+                    // console.log(el);
                     continue outer;
                 } 
-                console.log("2-й -- " + i);
+                // else if (el%i==0){                    
+                //     // console.log(el + " " + i);
+                //     continue outer;
+                // } 
+                // console.log("2-й -- " + i);
                 // else {
                 //     console.log(el + " " + i + " -- ура!")
                 // }
             }
-            // sum += el;
-            // console.log(1111);
+            sum += el;
+            console.log("the one --> " + el);
             // continue outer;
         }
     }
 }
+console.log("sum of all primes --> " + sum);
 // console.log(Math.sqrt(2));
 // console.log(12 % 2);
 // arr.forEach((item, index, array) => {
