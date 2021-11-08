@@ -26,7 +26,7 @@ for (const row of arr) {
                     console.log(el + " " + i);
                     continue outer;
                 } else {
-                    // console.log(el + " " + i + " -- ура!")
+                    console.log(el + " " + i + " -- ура!")
                 }
             }
             // sum += el;
