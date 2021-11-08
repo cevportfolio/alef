@@ -31,8 +31,8 @@ for (const row of arr) {
                 // }
             }
             // sum += el;
-            console.log(1111);
-            continue outer;
+            // console.log(1111);
+            // continue outer;
         }
     }
 }
