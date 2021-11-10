@@ -1,66 +1,35 @@
 <?php
-  if (isset($_POST['dbName']) === true && empty($_POST['dbName']) === false &&
-      isset($_POST['dbUser']) === true && empty($_POST['dbUser']) === false &&
-      isset($_POST['dbPassword']) === true && empty($_POST['dbPassword']) === false) {
-    include("dbconnect.php");
-    $login = (trim($_POST['login']));
-    $password = (trim($_POST['password']));
+  $arr = array (
+    array(399, 9160, 144, 3230, 407, 8875, 1597, 9835), 
+    array(2093, 3279, 21, 9038, 918, 9238, 2592, 7467), 
+    array(3531, 1597, 3225, 153, 9970, 2937, 8, 807),
+    array(7010, 662, 6005, 4181, 3, 4606, 5, 3980), 
+    array(6367, 2098, 89, 13, 337, 9196, 9950, 5424), 
+    array(7204, 9393, 7149, 8, 89, 6765, 8579, 55), 
+    array(1597, 4360, 8625, 34, 4409, 8034, 2584, 2), 
+    array(920, 3172, 2400, 2326, 3413, 4756, 6453, 8), 
+    array(4914, 21, 4923, 4012, 7960, 2254, 4448, 1)
+  );
     
-    $index = (int)$area - 1;
-    if ((int)$area == 7) {
-      $index = (int)$area - 2;
-    }
-    date_default_timezone_set("UTC"); // Устанавливаем часовой пояс по Гринвичу
-    $time = time(); // Вот это значение отправляем в базу
-    $time += 11 * 3600; // Добавляем 11 часов к времени по Гринвичу
-    $dateTimeDoc = date("Y-m-d H:i:s", $time); // Выводим время пользователя, согласно его часовому поясу
-
-    $date = date("Y-m-d H:i:s");
-    $currDate = date("Y-m-d H:i:s");
-    $currDate = strtotime($dateTimeDoc);
-    $date = strtotime($dateTimeDoc);
-    if ($accounting == "1") {
-      // $date = date('Y-m-d', $date);
-    } else {
-      $date = strtotime("-4 day", $date);
-    }
-    if (empty($_POST['dateStart']) === false && empty($_POST['dateEnd']) === false) {
-      $dateStart = (trim($_POST['dateStart']));
-      $dateEnd = (trim($_POST['dateEnd']));
-    } else {
-      $dateStart = date('Y-m-d', $date);
-      $dateEnd = date('Y-m-d H:i:s', $currDate);
-    }
-    $areaArray[0] = 'invoice_one';
-    $areaArray[1] = 'invoice_two';
-
-    $resultArray = array();
-    $tempArray = array();
-    if ($reportType == 'report') {
-      if ($salesPartnerTrigger == false && $areaTrigger == false) {
-        for ($i = 0; $i < count($areaArray); $i++) {
-          $areaArrayTmp = $areaArray[$i];
-          $sql = "SELECT $areaArrayTmp.ID, InvoiceNumber, AgentID, SalesPartnerID, AccountingType,
-          ItemID, Quantity, Price, Total, ExchangeQuantity, ReturnQuantity, DateTimeDocLocal,
-          InvoiceSum, номенклатура.Наименование, salespartners.Юр_Наименование FROM $areaArrayTmp
-          INNER JOIN номенклатура ON $areaArrayTmp.ItemID = номенклатура.Артикул
-          INNER JOIN salespartners ON $areaArrayTmp.SalesPartnerID = salespartners.ID
-          WHERE DateTimeDocLocal BETWEEN '$dateStart' AND '$dateEnd'  ORDER BY ItemID";
-          if ($result = mysqli_query($dbconnect, $sql)){
-            while($row = $result->fetch_object()){
-              $tempArray = $row;
-              array_push($resultArray, $tempArray);
+  function sumOfAllPrimes($arr) {
+    $sum = 0;
+    for ($row = 0; $row < count($arr); $row++) {
+      for ($el = 0; $el < count($arr[$row]); $el++) {
+        if ($arr[$row][$el] == 2) {
+          $sum += $arr[$row][$el];
+        } elseif ($arr[$row][$el]%2 > 0 && $arr[$row][$el] > 1) {
+          for ($i = 3; $i < sqrt($arr[$row][$el]); $i += 2) {
+            if ($arr[$row][$el]%$i==0) {
+              goto outer;
             }
-          } else {
-            $json["failed"] = 'Login failed. Invalid login
-            and/or password';
-            echo json_encode($json, JSON_UNESCAPED_UNICODE);
-            mysqli_close($dbconnect);
           }
+          $sum += $arr[$row][$el];
         }
+        outer:
       }
     }
-    echo json_encode($resultArray, JSON_UNESCAPED_UNICODE);
-    mysqli_close($dbconnect);
+    echo $sum;
   }
+  
+  sumOfAllPrimes($arr);
 ?>
