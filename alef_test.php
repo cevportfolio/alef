@@ -15,17 +15,17 @@
     $sum = 0;
     for ($row = 0; $row < count($arr); $row++) {
       for ($el = 0; $el < count($arr[$row]); $el++) {
-        // if ($arr[$row][$el] == 2) {
-        //   $sum += $arr[$row][$el];
-        // } elseif ($arr[$row][$el]%2 > 0 && $arr[$row][$el] > 1) {
-        //   for ($i = 3; $i < sqrt($arr[$row][$el]); $i += 2) {
-        //     if ($arr[$row][$el]%$i==0) {
-        //       // goto outer;
-        //     }
-        //   }
-        //   $sum += $arr[$row][$el];
-        // }
-        // outer:
+        if ($arr[$row][$el] == 2) {
+          $sum += $arr[$row][$el];
+        } elseif ($arr[$row][$el]%2 > 0 && $arr[$row][$el] > 1) {
+          for ($i = 3; $i < sqrt($arr[$row][$el]); $i += 2) {
+            if ($arr[$row][$el]%$i==0) {
+              // goto outer;
+            }
+          }
+          $sum += $arr[$row][$el];
+        }
+        outer:
       }
     }
     echo $sum;
