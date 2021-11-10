@@ -20,7 +20,7 @@
         } elseif ($arr[$row][$el]%2 > 0 && $arr[$row][$el] > 1) {
           for ($i = 3; $i < sqrt($arr[$row][$el]); $i += 2) {
             if ($arr[$row][$el]%$i==0) {
-              // goto outer;
+              goto outer;
             }
           }
           $sum += $arr[$row][$el];
@@ -42,6 +42,7 @@
     
   }
   
-  sumOfAllPrimes($arr);
+  // sumOfAllPrimes($arr);
   // randomInteger();
+  sumOfTheRestInts();
 ?>
