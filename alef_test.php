@@ -30,6 +30,18 @@
     }
     echo $sum;
   }
+
+  function randomInteger() {
+    for ($i = 1; $i < 1000; $i++) {
+      $arr[$i] = random_int(1, 1000);
+      // echo "Random number: ".$arr[$i].PHP_EOL;
+    }
+  }
+
+  function sumOfTheRestInts() {
+    
+  }
   
-  sumOfAllPrimes($arr);
+  // sumOfAllPrimes($arr);
+  // randomInteger();
 ?>
