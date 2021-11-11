@@ -50,7 +50,7 @@
     $assocArrRepeats = array();
     $assocArrSum = 0;
     $assocArrRepeatsSum = 0;
-    $upperLimit = 10;
+    $upperLimit = 1000;
     $startAt = 1;
     for ($i = $startAt; $i <= $upperLimit; $i++) {
       $indexedArr[$i] = random_int($startAt, $upperLimit);
