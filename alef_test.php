@@ -84,6 +84,19 @@
   // а второе — кол-во совпавших цифр, находящихся на своей позиции.
   // 
 
+  function gameGuessANumber() {
+    $guessedNumber = "3810";
+    $arrIndexedGuessedNumber = str_split($guessedNumber, 1);
+    $arrGuesses = array("2679", "1234", "5678", "0183", "3801", "3810");
+    for ($i = 0; $i < count($arrIndexedGuessedNumber); $i++) {
+      for ($j = 0; $j < count($arrGuesses); $j++) {
+        $arrIndexedGuesses = str_split($arrGuesses[$j], 1);
+        
+      }
+    }
+    echo $answer.PHP_EOL;
+  }
+
   // sumOfAllPrimes($arr);
   // randomIntegerArraySum();
 ?>
