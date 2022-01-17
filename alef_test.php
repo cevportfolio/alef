@@ -34,7 +34,7 @@
           }
           $sum += $arr[$row][$el];
         }
-        outer:
+        outer:;
       }
     }
     echo $sum;
@@ -85,18 +85,42 @@
   // 
 
   function gameGuessANumber() {
-    $guessedNumber = "3810";
-    $arrIndexedGuessedNumber = str_split($guessedNumber, 1);
+    $inPlace = 0;
+    $found = 0;
+    $proposedNumber = "3810";
+    $arrIndexedProposedNumber = str_split($proposedNumber, 1);
     $arrGuesses = array("2679", "1234", "5678", "0183", "3801", "3810");
-    for ($i = 0; $i < count($arrIndexedGuessedNumber); $i++) {
-      for ($j = 0; $j < count($arrGuesses); $j++) {
-        $arrIndexedGuesses = str_split($arrGuesses[$j], 1);
-        
+    for ($i = 0; $i < count($arrGuesses); $i++) {
+      // $arrIndexedGuesses = str_split($arrGuesses[$i], 1);
+      for ($j = 0; $j < count($arrIndexedProposedNumber); $j++) {        
+        $pos = strpos($arrGuesses[$i], $arrIndexedProposedNumber[$j]);
+        // echo "pos -- ".$pos.PHP_EOL;
+        // var_dump($pos);
+        // echo $arrIndexedProposedNumber[$j].PHP_EOL;
+        // echo $j.PHP_EOL;
+        // if ($pos === 0) {
+        //   echo "pos -- ".$pos.PHP_EOL;
+        //   echo "j -- ".$j.PHP_EOL;
+        // }
+        if (($pos == true && $j === $pos) || $pos ===0 && $j === $pos) {
+          // echo "j -- ".$j.PHP_EOL;
+          $inPlace += 1;
+          $found += 1;
+        } elseif (($pos == true && $j !== $pos || $pos === 0)) {
+          // echo "j -- ".$j.PHP_EOL;
+          // echo "pos -- ".$pos.PHP_EOL;
+          $found += 1;
+        } else {
+        }
       }
+      $answer = $found."-".$inPlace;
+      echo $answer.PHP_EOL;      
+      $found = 0;
+      $inPlace = 0;
     }
-    echo $answer.PHP_EOL;
   }
 
-  // sumOfAllPrimes($arr);
+  // sumOfAllPrimes();
   // randomIntegerArraySum();
+  gameGuessANumber();
 ?>
